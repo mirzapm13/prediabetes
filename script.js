@@ -77,22 +77,39 @@ function advice(hasil) {
 // console.log(perhitungan(input, pertanyaanDiabet));
 
 let faktorRisiko = [
-  { pertanyaan: "Memiliki riwayat prediabetes atau diabetes dalam keluarga", yes: false },
+  {
+    pertanyaan: "Memiliki riwayat prediabetes atau diabetes dalam keluarga",
+    yes: false,
+  },
   { pertanyaan: "Memiliki berat badan yang berlebihan", yes: false },
   { pertanyaan: "Berusia di atas 45 tahun", yes: false },
-  { pertanyaan: "Menderita diabetes saat kehamilan (diabetes gestasional)", yes: false },
+  {
+    pertanyaan: "Menderita diabetes saat kehamilan (diabetes gestasional)",
+    yes: false,
+  },
   { pertanyaan: "Menderita PCOS", yes: false },
   { pertanyaan: "Menderita hipertensi", yes: false },
   { pertanyaan: "Menderita kolesterol tinggi", yes: false },
-  { pertanyaan: "banyak mengonsumsi soda, makanan kemasan, daging merah, godan minuman manis", yes: false },
+  {
+    pertanyaan:
+      "banyak mengonsumsi soda, makanan kemasan, daging merah, godan minuman manis",
+    yes: false,
+  },
   { pertanyaan: "Memiliki kebiasaan merokok", yes: false },
-  { pertanyaan: "Tidak banyak berolahraga atau melakukan aktivitas fisik", yes: false },
-
-]
+  {
+    pertanyaan: "Tidak banyak berolahraga atau melakukan aktivitas fisik",
+    yes: false,
+  },
+];
 
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
-  document.getElementById('question').innerHTML += (`<h1 id='question-${i}'>${i + 1}. ${pertanyaanDiabet[i].question}</h1>`)
-  document.getElementById('question').innerHTML += (`<div class="form-check form-check-inline">
+  document.getElementById(
+    "question"
+  ).innerHTML += `<div class='section-question container mt-5' id> <h1 id='question-${i}'>${
+    i + 1
+  }. ${
+    pertanyaanDiabet[i].question
+  }</h1> <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inlineRadioOptions${i}" id="inlineRadioYa${i}" value="true" />
   <label class="form-check-label" for="inlineRadioYa${i}">Ya</label>
 </div>
@@ -100,38 +117,44 @@ for (let i = 0; i < pertanyaanDiabet.length; i++) {
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inlineRadioOptions${i}" id="inlineRadioTidak${i}" value="false" />
   <label class="form-check-label" for="inlineRadioTidak${i}">Tidak</label>
-</div>`)
+</div>
+
+<a href="${
+    i == pertanyaanDiabet.length - 1 ? "#finishbtn" : `#question-${i+1}`
+  }">
+<button type="button" class="btn btn-info">Selanjutnya</button>
+</a>
+
+</div>`;
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Tidak</button>`)
 }
 
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
-  let radioBtnYes = document.getElementById(`inlineRadioYa${i}`)
+  let radioBtnYes = document.getElementById(`inlineRadioYa${i}`);
   radioBtnYes.addEventListener("click", function () {
-    answerArray[i] = true
+    answerArray[i] = true;
     // console.log(answerArray[i], i);
   });
 
-  let radioBtnNo = document.getElementById(`inlineRadioTidak${i}`)
+  let radioBtnNo = document.getElementById(`inlineRadioTidak${i}`);
   radioBtnNo.addEventListener("click", function () {
-    answerArray[i] = false
+    answerArray[i] = false;
     // console.log(answerArray[i], i);
   });
 }
 
-let radioBtnNo = document.getElementById(`finishbtn`)
+let radioBtnNo = document.getElementById(`finishbtn`);
 radioBtnNo.addEventListener("click", function () {
   console.log(answerArray);
   // console.log(perhitungan(answerArray,pertanyaanDiabet));
-  document.getElementById('report').innerHTML = (`<p>${perhitungan(answerArray,pertanyaanDiabet)}</p>`)
+  document.getElementById("report").innerHTML = `<p>${perhitungan(
+    answerArray,
+    pertanyaanDiabet
+  )}</p>`;
 });
 
-
-
-
-
 console.log(faktorRisiko[9]);
-
 
 // "Memiliki riwayat prediabetes atau diabetes dalam keluarga",
 //     "Memiliki berat badan yang berlebihan",
