@@ -96,8 +96,11 @@ let faktorRisiko = [
 ]
 
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
-  let question = document.getElementById('question')
-  question.innerHTML(`<h1>${pertanyaanDiabet[i].question}</h1>`)
+  document.createElement('div')
+  document.getElementById('question').innerHTML += (`<h1 id='question-${i}'>${pertanyaanDiabet[i].question}</h1>`)
+  document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
+  document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Tidak</button>`)
+
 }
 
 console.log(faktorRisiko[9]);
