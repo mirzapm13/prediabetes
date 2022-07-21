@@ -95,6 +95,10 @@ let faktorRisiko = [
 
 ]
 
+for (let i = 0; i < pertanyaanDiabet.length; i++) {
+  let question = document.getElementById('question')
+  question.innerHTML(`<h1>${pertanyaanDiabet[i].question}</h1>`)
+}
 
 console.log(faktorRisiko[9]);
 
