@@ -51,8 +51,6 @@ const pertanyaanDiabet = [
   let input = [true, true, false, false, true, false, true, false];
   console.log(perhitungan(input, pertanyaanDiabet));
   
-=======
-
 let nasehatRendah = `Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :
 1. Mengonsumsi makanan dengan gizi seimbang
 2. Melakukan olahraga secara rutin
