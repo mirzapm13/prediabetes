@@ -2,24 +2,36 @@
 //nama
 //tinggi / berat badan
 //jika obesitas count++ //count+2
-let answerArray = [];
-let nasehatRendah = `Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :
-1. Mengonsumsi makanan dengan gizi seimbang
-2. Melakukan olahraga secara rutin
-3. Menjaga berat badan agar tetap ideal
-4. Memeriksa kadar gula darah secara rutin
-5. Tidak merokok`;
+let link = [
+  "https://c.tenor.com/HRclXisIZcUAAAAi/pill-objects.gif",
+  "https://c.tenor.com/tKbo4phHl7MAAAAj/grandmother-granny.gif",
+  "https://media0.giphy.com/media/NRPFpSPJbve80/giphy.gif?cid=790b76116ef5dac5d8ca0e1a51d32501500efa145c2e462c&rid=giphy.gif&ct=g",
+  "https://c.tenor.com/Ryss6iwvoA8AAAAS/candy-sour-gummi-worms.gif",
+  "https://images.bisnis-cdn.com/thumb/posts/2021/10/20/1456334/kolesterol.jpg?w=744&h=465",
+  "https://c.tenor.com/hKtyoc--xQ8AAAAC/blood-pressure-checking-blood-pressure.gif",
+  "https://c.tenor.com/u65KRrtQ4VwAAAAC/bandage-band-aid.gif",
+  "https://c.tenor.com/StwFLN2BQ94AAAAi/yellow-cab-yellow-cab-pizza.gif"
 
-let nasehatTinggi = `Segera di tangani, jika tidak prediabetes bisa berkembang menjadi diabetes tipe 2 dan dapat menimbulkan gangguan kesehatan lainnya, seperti :
-1. Penyakit kardiovaskular
-2. Infeksi
-3. Gagal ginjal kronis
-4. Luka pada kaki yang berisiko amputasi
-5. Kerusakaan mata dan kebutaan
-6. Kolestrol tinggi
-7. Tekanan darah tinggi
-8. Masalah pendengaran
-9. Penyakit Alzheimer`;
+]
+
+let answerArray = [];
+let nasehatRendah = [`Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :`,
+`1. Mengonsumsi makanan dengan gizi seimbang`,
+`2. Melakukan olahraga secara rutin`,
+`3. Menjaga berat badan agar tetap ideal`,
+`4. Memeriksa kadar gula darah secara rutin`,
+`5. Tidak merokok`];
+
+let nasehatTinggi = [`Segera di tangani, jika tidak prediabetes bisa berkembang menjadi diabetes tipe 2 dan dapat menimbulkan gangguan kesehatan lainnya, seperti :`,
+`1. Penyakit kardiovaskular`,
+`2. Infeksi`,
+`3. Gagal ginjal kronis`,
+`4. Luka pada kaki yang berisiko amputasi`,
+`5. Kerusakaan mata dan kebutaan`,
+`6. Kolestrol tinggi`,
+`7. Tekanan darah tinggi`,
+`8. Masalah pendengaran`,
+`9. Penyakit Alzheimer`];
 const pertanyaanDiabet = [
   {
     question: "Apakah didalam keluarga anda ada yang memiliki diabetes ?",
@@ -124,6 +136,9 @@ for (let i = 0; i < pertanyaanDiabet.length; i++) {
   }">
 <button type="button" class="btn btn-info">Selanjutnya</button>
 </a>
+<div class='image'>
+  <img display='block' width='400' height='auto' src='${link[i]}'>
+</div>
 
 </div>`;
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
@@ -148,10 +163,26 @@ let radioBtnNo = document.getElementById(`finishbtn`);
 radioBtnNo.addEventListener("click", function () {
   console.log(answerArray);
   // console.log(perhitungan(answerArray,pertanyaanDiabet));
-  document.getElementById("report").innerHTML = `<p>${perhitungan(
+  let advice = document.getElementsByClassName('advice')[0]
+  advice.innerHTML = ``
+
+  let textArray = perhitungan(answerArray,pertanyaanDiabet)
+
+  for (const text of textArray) {
+    advice.innerHTML += `<p>${text}</p>`
+  }
+
+  // advice.innerHTML = `<p>${perhitungan(
+  //   answerArray,
+  //   pertanyaanDiabet
+  // )}</p>`;
+
+  console.log(perhitungan(
     answerArray,
     pertanyaanDiabet
-  )}</p>`;
+  ));
+
+  document.getElementById('report').style.display = 'flex'
 });
 
 console.log(faktorRisiko[9]);

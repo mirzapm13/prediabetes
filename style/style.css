@@ -9,3 +9,17 @@
     width: 100vw;
     height: 100vh;
 }
+
+#report{
+    background-color: rgb(218, 238, 255);
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+}
+
+.advice {
+    width: 800px;
+    height: 400px;
+    /* margin-top: 200px; */
+}
