@@ -98,10 +98,23 @@ let faktorRisiko = [
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
   document.createElement('div')
   document.getElementById('question').innerHTML += (`<h1 id='question-${i}'>${pertanyaanDiabet[i].question}</h1>`)
-  document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
-  document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Tidak</button>`)
-
+  document.getElementById('question').innerHTML += (`<div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefaultYa" id="flexRadioDefaultYa${i}">
+        <label class="form-check-label" for="flexRadioDefaultYa${i}">
+          Ya
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultTidak${i}" checked>
+        <label class="form-check-label" for="flexRadioDefaultTidak${i}">
+          Tidak
+        </label>
+      </div>`)
+  // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
+  // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Tidak</button>`)
 }
+
+
 
 console.log(faktorRisiko[9]);
 
