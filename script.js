@@ -2,6 +2,7 @@
 //nama
 //tinggi / berat badan
 //jika obesitas count++ //count+2
+let answerArray = [];
 let nasehatRendah = `Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :
 1. Mengonsumsi makanan dengan gizi seimbang
 2. Melakukan olahraga secara rutin
@@ -72,41 +73,60 @@ function advice(hasil) {
   }
 }
 
-let input = [true, true, false, false, true, false, true, false];
-console.log(perhitungan(input, pertanyaanDiabet));
+// let input = [true, true, false, false, true, false, true, false];
+// console.log(perhitungan(input, pertanyaanDiabet));
 
 let faktorRisiko = [
-    {pertanyaan: "Memiliki riwayat prediabetes atau diabetes dalam keluarga", yes : false},
-    {pertanyaan: "Memiliki berat badan yang berlebihan", yes : false},
-    {pertanyaan: "Berusia di atas 45 tahun", yes : false},
-    {pertanyaan: "Menderita diabetes saat kehamilan (diabetes gestasional)", yes : false},
-    {pertanyaan: "Menderita PCOS", yes : false},
-    {pertanyaan: "Menderita hipertensi", yes : false},
-    {pertanyaan: "Menderita kolesterol tinggi", yes : false},
-    {pertanyaan: "banyak mengonsumsi soda, makanan kemasan, daging merah, godan minuman manis", yes : false},
-    {pertanyaan: "Memiliki kebiasaan merokok", yes : false},
-    {pertanyaan: "Tidak banyak berolahraga atau melakukan aktivitas fisik", yes : false},
+  { pertanyaan: "Memiliki riwayat prediabetes atau diabetes dalam keluarga", yes: false },
+  { pertanyaan: "Memiliki berat badan yang berlebihan", yes: false },
+  { pertanyaan: "Berusia di atas 45 tahun", yes: false },
+  { pertanyaan: "Menderita diabetes saat kehamilan (diabetes gestasional)", yes: false },
+  { pertanyaan: "Menderita PCOS", yes: false },
+  { pertanyaan: "Menderita hipertensi", yes: false },
+  { pertanyaan: "Menderita kolesterol tinggi", yes: false },
+  { pertanyaan: "banyak mengonsumsi soda, makanan kemasan, daging merah, godan minuman manis", yes: false },
+  { pertanyaan: "Memiliki kebiasaan merokok", yes: false },
+  { pertanyaan: "Tidak banyak berolahraga atau melakukan aktivitas fisik", yes: false },
 
 ]
 
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
-  document.createElement('div')
-  document.getElementById('question').innerHTML += (`<h1 id='question-${i}'>${pertanyaanDiabet[i].question}</h1>`)
-  document.getElementById('question').innerHTML += (`<div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefaultYa" id="flexRadioDefaultYa${i}">
-        <label class="form-check-label" for="flexRadioDefaultYa${i}">
-          Ya
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefaultTidak${i}" checked>
-        <label class="form-check-label" for="flexRadioDefaultTidak${i}">
-          Tidak
-        </label>
-      </div>`)
+  document.getElementById('question').innerHTML += (`<h1 id='question-${i}'>${i + 1}. ${pertanyaanDiabet[i].question}</h1>`)
+  document.getElementById('question').innerHTML += (`<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions${i}" id="inlineRadioYa${i}" value="true" />
+  <label class="form-check-label" for="inlineRadioYa${i}">Ya</label>
+</div>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions${i}" id="inlineRadioTidak${i}" value="false" />
+  <label class="form-check-label" for="inlineRadioTidak${i}">Tidak</label>
+</div>`)
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Tidak</button>`)
 }
+
+for (let i = 0; i < pertanyaanDiabet.length; i++) {
+  let radioBtnYes = document.getElementById(`inlineRadioYa${i}`)
+  radioBtnYes.addEventListener("click", function () {
+    answerArray[i] = true
+    // console.log(answerArray[i], i);
+  });
+
+  let radioBtnNo = document.getElementById(`inlineRadioTidak${i}`)
+  radioBtnNo.addEventListener("click", function () {
+    answerArray[i] = false
+    // console.log(answerArray[i], i);
+  });
+}
+
+let radioBtnNo = document.getElementById(`finishbtn`)
+radioBtnNo.addEventListener("click", function () {
+  console.log(answerArray);
+  // console.log(perhitungan(answerArray,pertanyaanDiabet));
+  document.getElementById('report').innerHTML = (`<p>${perhitungan(answerArray,pertanyaanDiabet)}</p>`)
+});
+
+
 
 
 
