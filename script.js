@@ -25,29 +25,45 @@ const pertanyaanDiabet = [
     question: "Apakah didalam keluarga anda ada yang memiliki diabetes ?",
     point: 5,
     yes: false,
+    url: "https://c.tenor.com/HRclXisIZcUAAAAi/pill-objects.gif"
   }, //count +5
-  { question: "Apakah anda suka berolahraga ?", point: -1, yes: false }, //count-1
-  { question: "Apakah anda perokok aktif ?", point: 1, yes: false }, //count+1
+  {
+    question: "Apakah anda suka berolahraga ?",
+    point: -1,
+    yes: false,
+    url: "https://c.tenor.com/tKbo4phHl7MAAAAj/grandmother-granny.gif",
+  }, //count-1
+  {
+    question: "Apakah anda perokok aktif ?",
+    point: 1,
+    yes: false,
+    url: "https://media0.giphy.com/media/NRPFpSPJbve80/giphy.gif?cid=790b76116ef5dac5d8ca0e1a51d32501500efa145c2e462c&rid=giphy.gif&ct=g",
+  }, //count+1
   {
     question: "Apakah anda mengkonsumsi makanan atau minuman manis ?",
     point: 1,
     yes: false,
+    url: "https://c.tenor.com/Ryss6iwvoA8AAAAS/candy-sour-gummi-worms.gif"
   }, //count+1
   {
     question: "Apakah anda memiliki kolestrol tinggi ?",
     point: 1,
     yes: false,
+    url: "https://images.bisnis-cdn.com/thumb/posts/2021/10/20/1456334/kolesterol.jpg?w=744&h=465"
   }, //count+1
-  { question: "Apakah anda menderita hipertensi ?", point: 1, yes: false }, //count+1
+  { question: "Apakah anda menderita hipertensi ?", point: 1, yes: false,
+  url : "https://c.tenor.com/hKtyoc--xQ8AAAAC/blood-pressure-checking-blood-pressure.gif" }, //count+1
   {
     question: "Jika anda terluka, apakah lukanya sembuh dengan cepat ?",
     point: 2,
     yes: false,
+    url: "https://c.tenor.com/u65KRrtQ4VwAAAAC/bandage-band-aid.gif"
   }, //count +2
   {
     question: "Apakah anda sering merasa haus dan lapar ?",
     point: 1,
     yes: false,
+    url: "https://c.tenor.com/StwFLN2BQ94AAAAi/yellow-cab-yellow-cab-pizza.gif"
   }, //count+1 ,
 ];
 //
@@ -105,7 +121,7 @@ let faktorRisiko = [
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
   document.getElementById(
     "question"
-  ).innerHTML += `<div class='section-question container mt-5' id> <h1 id='question-${i}'>${
+  ).innerHTML += `<div class='section-question mt-5' id> <h1 id='question-${i}'>${
     i + 1
   }. ${
     pertanyaanDiabet[i].question
@@ -120,10 +136,12 @@ for (let i = 0; i < pertanyaanDiabet.length; i++) {
 </div>
 
 <a href="${
-    i == pertanyaanDiabet.length - 1 ? "#finishbtn" : `#question-${i+1}`
+    i == pertanyaanDiabet.length - 1 ? "#finishbtn" : `#question-${i + 1}`
   }">
 <button type="button" class="btn btn-info">Selanjutnya</button>
 </a>
+
+<image class="resize" src="${pertanyaanDiabet[i].url}"></image>
 
 </div>`;
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
