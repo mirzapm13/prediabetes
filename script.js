@@ -2,24 +2,39 @@
 //nama
 //tinggi / berat badan
 //jika obesitas count++ //count+2
-let answerArray = [];
-let nasehatRendah = `Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :
-1. Mengonsumsi makanan dengan gizi seimbang
-2. Melakukan olahraga secara rutin
-3. Menjaga berat badan agar tetap ideal
-4. Memeriksa kadar gula darah secara rutin
-5. Tidak merokok`;
+let nama = ''
+let link = [
+  "https://c.tenor.com/HRclXisIZcUAAAAi/pill-objects.gif",
+  "https://c.tenor.com/tKbo4phHl7MAAAAj/grandmother-granny.gif",
+  "https://media0.giphy.com/media/NRPFpSPJbve80/giphy.gif?cid=790b76116ef5dac5d8ca0e1a51d32501500efa145c2e462c&rid=giphy.gif&ct=g",
+  "https://c.tenor.com/Ryss6iwvoA8AAAAS/candy-sour-gummi-worms.gif",
+  "https://images.bisnis-cdn.com/thumb/posts/2021/10/20/1456334/kolesterol.jpg?w=744&h=465",
+  "https://c.tenor.com/hKtyoc--xQ8AAAAC/blood-pressure-checking-blood-pressure.gif",
+  "https://c.tenor.com/u65KRrtQ4VwAAAAC/bandage-band-aid.gif",
+  "https://c.tenor.com/StwFLN2BQ94AAAAi/yellow-cab-yellow-cab-pizza.gif"
 
-let nasehatTinggi = `Segera di tangani, jika tidak prediabetes bisa berkembang menjadi diabetes tipe 2 dan dapat menimbulkan gangguan kesehatan lainnya, seperti :
-1. Penyakit kardiovaskular
-2. Infeksi
-3. Gagal ginjal kronis
-4. Luka pada kaki yang berisiko amputasi
-5. Kerusakaan mata dan kebutaan
-6. Kolestrol tinggi
-7. Tekanan darah tinggi
-8. Masalah pendengaran
-9. Penyakit Alzheimer`;
+]
+
+let answerArray = [];
+let nasehatRendah = [`risiko prediabetes anda rendah`,
+`Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :`,
+`1. Mengonsumsi makanan dengan gizi seimbang`,
+`2. Melakukan olahraga secara rutin`,
+`3. Menjaga berat badan agar tetap ideal`,
+`4. Memeriksa kadar gula darah secara rutin`,
+`5. Tidak merokok`];
+
+let nasehatTinggi = [`risiko prediabetes anda tinggi`,
+`Segera di tangani, jika tidak prediabetes bisa berkembang menjadi diabetes tipe 2 dan dapat menimbulkan gangguan kesehatan lainnya, seperti :`,
+`1. Penyakit kardiovaskular`,
+`2. Infeksi`,
+`3. Gagal ginjal kronis`,
+`4. Luka pada kaki yang berisiko amputasi`,
+`5. Kerusakaan mata dan kebutaan`,
+`6. Kolestrol tinggi`,
+`7. Tekanan darah tinggi`,
+`8. Masalah pendengaran`,
+`9. Penyakit Alzheimer`];
 const pertanyaanDiabet = [
   {
     question: "Apakah didalam keluarga anda ada yang memiliki diabetes ?",
@@ -118,14 +133,32 @@ let faktorRisiko = [
   },
 ];
 
+function mulai() {
+  if(document.getElementById('inputnama').value === ''){
+    alert('Input Nama Wajib Diisi')
+  } else {
+    nama = document.getElementById('inputnama').value
+    location.href = '#question'
+  }
+}
+
+function reset() {
+  nama = ''
+  document.getElementById('inputnama').value = ''
+  let ele = document.querySelectorAll('input[type=radio]')
+  for(var i=0;i<ele.length;i++){
+    ele[i].checked = false;
+  }
+  location.href = '#start'
+  document.getElementById('report').style.display = 'none'
+}
+
 for (let i = 0; i < pertanyaanDiabet.length; i++) {
-  document.getElementById(
-    "question"
-  ).innerHTML += `<div class='section-question mt-5' id> <h1 id='question-${i}'>${
-    i + 1
-  }. ${
-    pertanyaanDiabet[i].question
-  }</h1> <div class="form-check form-check-inline">
+  document.getElementById("question").innerHTML += `<div class='section-question mt-5' id='question-${i}'>
+  <image class="resize" src="${pertanyaanDiabet[i].url}"></image>
+  <h1>${i + 1}. ${pertanyaanDiabet[i].question}</h1> 
+  <div class='radiobtngroup' style='margin-bottom: 40px'>
+<div class="form-check form-check-inline" style='margin-right: 100px;'>
   <input class="form-check-input" type="radio" name="inlineRadioOptions${i}" id="inlineRadioYa${i}" value="true" />
   <label class="form-check-label" for="inlineRadioYa${i}">Ya</label>
 </div>
@@ -134,15 +167,11 @@ for (let i = 0; i < pertanyaanDiabet.length; i++) {
   <input class="form-check-input" type="radio" name="inlineRadioOptions${i}" id="inlineRadioTidak${i}" value="false" />
   <label class="form-check-label" for="inlineRadioTidak${i}">Tidak</label>
 </div>
+</div>
 
-<a href="${
-    i == pertanyaanDiabet.length - 1 ? "#finishbtn" : `#question-${i + 1}`
-  }">
-<button type="button" class="btn btn-info">Selanjutnya</button>
+<a href="${i == pertanyaanDiabet.length - 1 ? "#finish" : `#question-${i + 1}`}">
+<button type="button" class="btn btn-primary btn-lg">Selanjutnya</button>
 </a>
-
-<image class="resize" src="${pertanyaanDiabet[i].url}"></image>
-
 </div>`;
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Ya</button>`)
   // document.getElementById('question').innerHTML += (`<button class='btn btn-primary btn-lg'>Tidak</button>`)
@@ -166,13 +195,28 @@ let radioBtnNo = document.getElementById(`finishbtn`);
 radioBtnNo.addEventListener("click", function () {
   console.log(answerArray);
   // console.log(perhitungan(answerArray,pertanyaanDiabet));
-  document.getElementById("report").innerHTML = `<p>${perhitungan(
+  let advice = document.getElementsByClassName('advice')[0]
+  advice.innerHTML = ``
+
+  let textArray = perhitungan(answerArray,pertanyaanDiabet)
+
+
+  for (let i = 0; i < textArray.length; i++) {
+    if(i === 0){
+      advice.innerHTML += `<p>Hi ${nama}, ${textArray[i]}</p>`
+    } else {
+      advice.innerHTML += `<p>${textArray[i]}</p>`
+    }
+  }
+
+  console.log(perhitungan(
     answerArray,
     pertanyaanDiabet
-  )}</p>`;
-});
+  ));
 
-console.log(faktorRisiko[9]);
+  document.getElementById('report').style.display = 'flex'
+  location.href = "#report";
+});
 
 // "Memiliki riwayat prediabetes atau diabetes dalam keluarga",
 //     "Memiliki berat badan yang berlebihan",
