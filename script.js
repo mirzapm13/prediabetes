@@ -63,7 +63,7 @@ const pertanyaanDiabet = [
     url: "https://media0.giphy.com/media/NRPFpSPJbve80/giphy.gif?cid=790b76116ef5dac5d8ca0e1a51d32501500efa145c2e462c&rid=giphy.gif&ct=g",
   }, //count+1
   {
-    question: "Apakah anda mengkonsumsi makanan atau minuman manis ?",
+    question: "Apakah anda sering mengkonsumsi makanan atau minuman manis ?",
     point: 1,
     yes: false,
     url: "https://c.tenor.com/Ryss6iwvoA8AAAAS/candy-sour-gummi-worms.gif"
