@@ -24,6 +24,14 @@ let nasehatRendah = [`risiko prediabetes anda rendah`,
 `4. Memeriksa kadar gula darah secara rutin`,
 `5. Tidak merokok`];
 
+let nasehatSedang = [`risiko prediabetes anda sedang`,
+`Lakukan pencegahan prediabetes atau mengurangi risiko mengalami prediabetes dengan cara menjalankan gaya hidup sehat. Di antaranya :`,
+`1. Mengonsumsi makanan dengan gizi seimbang`,
+`2. Melakukan olahraga secara rutin`,
+`3. Menjaga berat badan agar tetap ideal`,
+`4. Memeriksa kadar gula darah secara rutin`,
+`5. Tidak merokok`];
+
 let nasehatTinggi = [`risiko prediabetes anda tinggi`,
 `Segera di tangani, jika tidak prediabetes bisa berkembang menjadi diabetes tipe 2 dan dapat menimbulkan gangguan kesehatan lainnya, seperti :`,
 `1. Penyakit kardiovaskular`,
@@ -93,15 +101,17 @@ function perhitungan(input, formPertanyaan) {
 
   if (sumPoint >= 9) return advice("resiko tinggi");
   if (sumPoint >= 5) return advice("resiko sedang");
-  else return advice("resiko sedang");
+  else return advice("resiko rendah");
 }
 
 function advice(hasil) {
-  if (hasil === "resiko rendah" || hasil === "resiko sedang") {
+  if (hasil === "resiko rendah") {
     return nasehatRendah;
-  } else {
+  } else if(hasil === "resiko sedang"){
+    return nasehatSedang
+  }else{
     return nasehatTinggi;
-  }
+}
 }
 
 // let input = [true, true, false, false, true, false, true, false];
