@@ -213,9 +213,9 @@ radioBtnNo.addEventListener("click", function () {
 
   for (let i = 0; i < textArray.length; i++) {
     if(i === 0){
-      advice.innerHTML += `<p>Hi ${nama}, ${textArray[i]}</p>`
+      advice.innerHTML += `<h1>Hi ${nama}, ${textArray[i]}</h1>`
     } else {
-      advice.innerHTML += `<p>${textArray[i]}</p>`
+      advice.innerHTML += `<h4>${textArray[i]}</h4>`
     }
   }
 
